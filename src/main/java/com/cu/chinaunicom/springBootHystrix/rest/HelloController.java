@@ -18,7 +18,7 @@ public class HelloController {
 	 * 
 	 * */
 	//code change 2
-	@HystrixCommand(fallbackMethod = "error", commandProperties = {
+	@HystrixCommand(fallbackMethod = "error", commandProperties = {  //fallbackMethod = "error";  error 对应下面的 error()方法 ,且 error()的参数需要与其对应的方法一样 
 	            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10001")
 	})
     @RequestMapping(value = "/hello", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"}) 
