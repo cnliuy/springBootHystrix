@@ -41,7 +41,7 @@ public class HelloController {
 	
 	/**
 	 * 注意此函数中的入参 须与 hello()的一致
-	 *    才能被调用
+	 *    才能被调用,即 ( HttpServletRequest request) 此处一致 
 	 * 
 	 * */
 	//code change 3
