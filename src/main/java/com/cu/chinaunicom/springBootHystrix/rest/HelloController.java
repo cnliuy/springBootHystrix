@@ -19,13 +19,14 @@ public class HelloController {
 	 * */
 	//code change 2
 	@HystrixCommand(fallbackMethod = "error", commandProperties = {  //fallbackMethod = "error";  error 对应下面的 error()方法 ,且 error()的参数需要与其对应的方法一样 
-	            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "10001")
+	            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "20001")
 	})
-    @RequestMapping(value = "/hello", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"}) 
+    //@RequestMapping(value = "/hello", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"}) 
+	@RequestMapping(value = "/hello", method = RequestMethod.GET) 
     public Object hello(HttpServletRequest request) {
+		System.out.println("------s------"+new Date());
+    	int millis  = 19000;
     	
-    	int millis  = 10000;
-    	Date date = new Date(); 
     	try {
     		System.out.println("等待中。。。");
 			Thread.sleep(millis);
@@ -33,6 +34,8 @@ public class HelloController {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} 
+    	Date date = new Date();
+    	System.out.println("-----e--------"+date);
     	return  "helloWorld "+date;    	
     }
 	
